@@ -1,0 +1,4 @@
+docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused "process_linux.go:449: container init caused \"process_linux.go:432: running prestart hook 1 caused \\\"error running hook: exit status 1, stdout: , stderr: nvidia-container-cli: mount error: mount operation failed: /home/rootx/docker/overlay/5c5ce4507e82b4ee77c6d76767b117011eb702c7f232290cfa9226fd432e9a6f/merged/proc/driver/nvidia/params/version/registry: no such file or directory\\\\n\\\"\"": unknown.
+
+systemctl restart docker
