@@ -1,0 +1,29 @@
+fatal error: hdf5.h: No such file or directory
+https://blog.csdn.net/a8039974/article/details/88908111
+atal error: hdf5.h: No such file or directory
+
+浩瀚之水_csdn 2019-03-30 10:22:13  609  收藏 1
+分类专栏： # 问题汇总
+在编译caffe的时候，可能会出现各种找不到文件的情况。这种情况的一种解决方式是改变Makefile.config中的路径。
+比如，在编译caffe的时候提醒找不到hdf5.h或者hdf5_hl.h , 错误提示为：
+./include/caffe/util/hdf5.hpp:6:18: fatal error: hdf5.h: No such file or directory
+
+这时使用命令
+
+sudo find / -name hdf5.h 和 sudo find / -name hdf5_hl.h ,
+
+找到相应的路径之后，把路径加到 Makefile.config中。
+
+比如，我的hdf5.h的路径为：/usr/include/hdf5/serial/hdf5.h , 则修改Makefile.config中的项“INCLUDE_DIRS”为：
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/include/hdf5/serial   /usr/local/include
+如果编译caffe时提示找不到libhdf5.so , 错误提示为：/usr/bin/ld: cannot find -lhdf5
+
+使用命令sudo find / -name libhdf5.so ，路径为：
+/usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so
+
+此时要修改Makefile.config中的项“LIBRARY_DIRS”为：
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/lib/x86_64-linux-gnu/hdf5/serial   /usr/local/lib /usr/lib
+
+
+总之，编译caffe时提示找不到一些文件时，可以使用命令“sudo find / -name 文件名” 来找到相应的路径，再把相关路径加入到文件caffe-master/Makefile.config之中即可。
+---------------------  
