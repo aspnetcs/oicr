@@ -1,0 +1,15 @@
+https://blog.csdn.net/lwgkzl/article/details/77657933
+./include/caffe/common.hpp:4:32: fatal error: boost/shared_ptr.hpp: 没有那个文件或目录
+
+lwgkzl 2017-08-28 21:42:39  12515  收藏 7
+分类专栏： caffe 文章标签： caffe
+版权
+第n+1次安装caffe。
+
+环境：ubuntu16.04+cpuonly+anaconda2
+
+解决方案：出现该错误的原因是少了依赖。
+
+在命令行输入：
+
+$ sudo apt-get install --no-install-recommends libboost-all-dev
