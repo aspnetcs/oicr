@@ -1,0 +1,18 @@
+caffe编译错误：make: protoc: Command not found
+https://blog.csdn.net/u013171226/article/details/111588225?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control
+caffe编译错误：make: protoc: Command not found
+
+陈 洪 伟 2020-12-23 13:41:02  44  收藏
+分类专栏： Caffe
+版权
+在xavier NX上面编译caffe源码时报错，
+
+PROTOC src/caffe/proto/caffe.proto
+CXX src/caffe/blob.cpp
+make: protoc: Command not found
+CXX src/caffe/layers/batch_reindex_layer.cpp
+CXX src/caffe/layers/recurrent_layer.cpp
+Makefile:642: recipe for target '.build_release/src/caffe/proto/caffe.pb.cc' failed
+解决方法为：
+
+sudo apt-get install  protobuf-compiler
