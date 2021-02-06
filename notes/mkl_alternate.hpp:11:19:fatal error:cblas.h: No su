@@ -1,0 +1,20 @@
+ubuntu14.04安装caffe-master 报错：./include/caffe/util/mkl_alternate.hpp:11:19:fatal error:cblas.h: No su
+
+https://blog.csdn.net/feelingjun/article/details/68512659
+ubuntu14.04安装caffe-master 报错：./include/caffe/util/mkl_alternate.hpp:11:19:fatal error:cblas.h: No su
+
+HowHardYouAre 2017-03-30 21:45:48  6906  收藏 1
+版权
+ubuntu14.04安装caffe-master 报错：./include/caffe/util/mkl_alternate.hpp:11:19:fatal error:cblas.h: No such file or directory  #include<cblas.h>
+
+
+
+由于我的Makefile.config文件中BLAS为atlas.
+
+在终端输入：sudo make clean 
+
+      sudo apt-get install libatlas-base-dev
+
+     重新进行编译就好了。(最好是把当前caffe-master删除，重新将解压为caffe-master再编译)
+
+
