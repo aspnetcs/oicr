@@ -1,0 +1,12 @@
+ubuntu 16.04 编译caffe出错：glog/logging.h: No such file or directory
+https://blog.csdn.net/zhe_csdn/article/details/87937169
+ubuntu 16.04 编译caffe出错：glog/logging.h: No such file or directory
+
+zhe_csdn 2019-02-26 16:09:39  6954  收藏 4
+分类专栏： caffe 文章标签： caffe
+版权
+ubuntu 16.04 编译caffe出错：glog/logging.h: No such file or directory
+//安装
+sudo apt-get install libgoogle-glog-dev
+//卸载
+sudo apt-get remove libgoogle-glog-dev
