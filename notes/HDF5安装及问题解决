@@ -1,0 +1,67 @@
+https://blog.csdn.net/weixin_40255337/article/details/84256604
+HDF5安装及问题解决
+
+谁把小明注册了 2018-11-19 17:34:30  21846  收藏 12
+分类专栏： linux常见问题 文章标签： hdf5 HDF5
+版权
+1. 
+
+    从官网下载hdf5，根据自己的要求下载对应的版本
+
+    hdf5-1.8.21.tar.gz
+
+
+
+2. 将下载的tar.gz文件切换到/opt下
+
+     sudo mv /当前绝对路径/hdf5-1.8.21.tar.gz /opt
+
+3. 执行解压
+
+    sudo tar -xvf hdf5-1.8.21.tar.gz
+
+解压后会生成目录hdf5-1.8.21，切换到该目录下
+
+    cd  hdf5-1.8.21/
+
+4.依次执行
+
+    sudo ./configure --prefix=/usr/local/hdf5
+
+    sudo make
+
+    sudo make check   
+
+    sudo make install
+
+5.安装成功后，在安装目录/usr/local下出现hdf5文件夹，打开后
+
+
+
+6.再切换到该目录下
+
+
+
+    cd /usr/local/hdf5/share/hdf5_examples/c
+
+    sudo ./run-c-ex.sh
+
+7. 执行命令
+
+    sudo h5cc -o h5_extend h5_extend.c。如果显示：
+
+                                                                        则执行：sudo apt install hdf5-helpers
+
+                                                                        再执行 sudo h5cc -o h5_extend h5_extend.c。
+
+                                                                如果显示：
+
+
+
+                                                                       则执行：sudo apt-get install libhdf5-serial-dev
+
+                                                                       再执行 sudo h5cc -o h5_extend h5_extend.c，直到执行后没有错误显示
+
+8. 执行命令 sudo ./h5_extend
+
+到此HDF5安装完毕。
