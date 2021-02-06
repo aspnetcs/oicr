@@ -1,0 +1,40 @@
+https://blog.csdn.net/u014696921/article/details/52628075
+搭建caffe环境时“error: hdf5.h”找不到的解决方法
+搭建caffe环境时“error: hdf5.h”找不到的解决方法
+
+2014wzy 2016-09-22 21:31:23  6099  收藏
+分类专栏： 问题解决
+搭建caffe环境时，在最后进行 ”$make all” 操作时，报错找不到 “hdf5.h”，找了半天原因，是因为在安装 “hdf5” 的时候使用的指令是
+
+“
+
+[html]  view plain  copy
+$ sudo apt-get libhdf5-serial-dev  
+
+”
+所以相应的需要更改"Makefile.config"文件中的包含目录
+
+ctrl+f 找到
+
+
+INCLUDE_DIRS:=$(PYTHON_INCLUDE) /usr/local/include
+
+ 
+然后在后面加上"serial"的包含目录，即：
+
+ 
+INCLUDE_DIRS:=$(PYTHON_INCLUDE) /usr/local/include/usr/include/hdf5/serial/
+
+ 
+接着需要更改相应的"Makefile"文件，找到
+
+ 
+LIBRARIES +=glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
+
+更改最后两项为：
+
+ 
+LIBRARIES +=glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+
+ 
+就可以了，继续make了。
