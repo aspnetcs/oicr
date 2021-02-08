@@ -1,0 +1,41 @@
+「caffe编译bug」.build_release/lib/libcaffe.so: undefined reference to cv::imread
+http://www.mamicode.com/info-detail-2524323.html
+「caffe编译bug」.build_release/lib/libcaffe.so: undefined reference to cv::imread
+时间：2018-11-19 14:39:46      阅读：1092      评论：0      收藏：0      [点我收藏+]
+标签：log   caffe   www.   cti   cto   output   too   images   aries   
+
+转自：https://www.douban.com/note/568788483/
+CXX/LD -o .build_release/tools/convert_imageset.bin
+.build_release/lib/libcaffe.so: undefined reference to cv::imread(cv::String const&, int)‘ .build_release/lib/libcaffe.so: undefined reference tocv::imencode(cv::String const&, cv::_InputArray const&, std::vector >&, std::vector > const&)‘
+.build_release/lib/libcaffe.so: undefined reference to `cv::imdecode(cv::_InputArray const&, int)‘
+collect2: error: ld returned 1 exit status
+make: *** [.build_release/tools/convert_imageset.bin] Error 1
+
+solution:
+
+add "opencv_imgcodecs" in Makefile.(LIBRARIES += glog gflags protobuf leveldb snappy \
+lmdb boost_system hdf5_hl hdf5 m \
+opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs)
+If you input "make all",the problem is the same again.But if you delete all the file in build(rm -rf ./build/*) before "make all"(I use make clean ),you will success.I just success
+
+github 讨论帖：https://github.com/BVLC/caffe/issues/2348
+
+
+ps:
+build/lib/libcaffe.a(image_io.o): In function caffe::ReadVideoToVolumeDatum(char const*, int, int, int, int, int, int, caffe::VolumeDatum*)‘: image_io.cpp:(.text+0x1905): undefined reference tocv::VideoCapture::VideoCapture()‘
+image_io.cpp:(.text+0x1abe): undefined reference to cv::VideoCapture::open(cv::String const&)‘ image_io.cpp:(.text+0x1ace): undefined reference tocv::VideoCapture::isOpened() const‘
+image_io.cpp:(.text+0x1c91): undefined reference to cv::VideoCapture::~VideoCapture()‘ image_io.cpp:(.text+0x1d22): undefined reference tocv::VideoCapture::get(int) const‘
+image_io.cpp:(.text+0x1d6d): undefined reference to cv::VideoCapture::set(int, double)‘ image_io.cpp:(.text+0x1de1): undefined reference tocv::VideoCapture::set(int, double)‘
+image_io.cpp:(.text+0x1e35): undefined reference to cv::VideoCapture::read(cv::_OutputArray const&)‘ image_io.cpp:(.text+0x1f7e): undefined reference tocv::VideoCapture::release()‘
+image_io.cpp:(.text+0x1fc3): undefined reference to cv::VideoCapture::read(cv::_OutputArray const&)‘ image_io.cpp:(.text+0x22e9): undefined reference tocv::VideoCapture::~VideoCapture()‘
+collect2: error: ld returned 1 exit status
+make: *** [build/tools/blob_proto_to_blob_binary.bin] Error 1
+make: *** Waiting for unfinished jobs....
+
+same solution by adding opencv_videoio to LIBRARIES in the Makefile
+
+「caffe编译bug」.build_release/lib/libcaffe.so: undefined reference to cv::imread
+
+标签：log   caffe   www.   cti   cto   output   too   images   aries   
+
+原文地址：https://www.cnblogs.com/houjun/p/9982903.html
