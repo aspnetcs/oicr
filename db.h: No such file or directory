@@ -1,0 +1,35 @@
+编译caffe遇到的问题（二）fatal error: leveldb/db.h: No such file or directory
+https://blog.csdn.net/muyeluo123/article/details/100917291
+编译caffe遇到的问题（二）fatal error: leveldb/db.h: No such file or directory
+
+muyeluo123 2019-09-17 10:16:38  2674  收藏
+分类专栏： 编译caffe遇到的问题 文章标签： leveldb 编译caffe linux
+版权
+问题二：缺少leveldb/db.h文件 
+ fatal error: leveldb/db.h: No such file or directory 
+
+1、下载leveldb
+
+github地址  https://github.com/google/leveldb
+
+2、网上查了好多资料，都说下载之后直接解压然后make就行
+
+但是！！！目前官方公布的leveldb根本就没有Makefile文件！！！
+
+所以需要自己cmake，官方说明文档里面给出了linux系统的编译步骤
+
+
+
+//  如果没有安装cmake，可以参照 https://blog.csdn.net/muyeluo123/article/details/100915910 进行安装 //
+
+3、cmake之后在编译
+
+$ make
+
+
+
+4、将leveldb/include/下的头文件copy到/usr/local/include/
+
+$ cp -r include/leveldb /usr/local/include/
+
+成功！
