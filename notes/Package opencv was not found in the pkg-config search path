@@ -1,0 +1,10 @@
+Package opencv was not found in the pkg-config search path
+https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path
+
+From your question I guess you are using Ubuntu (or a derivate). If you use:
+
+apt-file search opencv.pc
+
+then you see that you have to install libopencv-dev.
+
+After you do so, pkg-config --cflags opencv and pkg-config --libs opencv should work as expected.
