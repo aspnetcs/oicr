@@ -1,0 +1,31 @@
+add-apt-repository: command not found 解决方法
+https://blog.csdn.net/wolfqong/article/details/79420667
+add-apt-repository: command not found 解决方法
+
+wolfqong 2018-03-02 10:46:11  7681  收藏 5
+分类专栏： linux
+上次我遇到这个问题还是在ubuntu12.4. 解决这个问题要用以下命令来安装python-software-properties
+
+sudo apt-get install python-software-properties
+1
+2
+再安装一个查询工具:
+
+
+sudo apt-get install apt-file
+1
+2
+更新一下:
+
+apt-file update
+1
+查询在哪个包里:
+
+apt-file search add-apt-repository
+1
+安装:
+
+sudo apt-get install software-properties-common
+1
+2
+原文地址: https://pricklytech.wordpress.com/2014/05/16/ubuntu-server-14-4-trusty-add-apt-repository-command-not-found/
