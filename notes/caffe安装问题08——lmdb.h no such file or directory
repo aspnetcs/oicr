@@ -1,0 +1,22 @@
+caffe安装问题08——lmdb.h no such file or directory
+https://blog.csdn.net/sdlypyzq/article/details/85236736
+caffe安装问题08——lmdb.h no such file or directory
+
+张欣-男 2018-12-24 17:40:02  1952  收藏 2
+分类专栏： Caffe
+版权
+问题：
+
+./include/caffe/util/db_lmdb.hpp:8:18: fatal error: lmdb.h: No such file or directory
+compilation terminated.
+Makefile:591: recipe for target '.build_release/src/caffe/util/db.o' failed
+make: *** [.build_release/src/caffe/util/db.o] Error 1
+
+1
+2
+3
+4
+5
+解决方法：
+
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
