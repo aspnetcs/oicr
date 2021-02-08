@@ -1,0 +1,43 @@
+E: Unable to locate package libjasper-dev的解决办法（亲测可以解决）
+https://blog.csdn.net/qq_44830040/article/details/105961295
+E: Unable to locate package libjasper-dev的解决办法（亲测可以解决）
+
+爱跑步的mango 2020-05-06 22:39:53  2749  收藏 14
+版权
+出现错误 E: Unable to locate package libjasper-dev
+在这里插入图片描述
+解决办法
+依次执行如下命令：
+
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+1
+在这里插入图片描述
+
+sudo apt update
+1
+在这里插入图片描述
+
+sudo apt install libjasper1 libjasper-dev
+1
+在这里插入图片描述
+会出现这个错误
+
+E: Failed to fetch http://117.128.6.36/cache/security.ubuntu.com/ubuntu/pool/main/j/jasper/libjasper-dev_1.900.1-debian1-2.4ubuntu1.2_amd64.deb?ich_args2=529-06221902044015_1282b41fada17941a893cd8dc1961f3e_10001002_9c896c24d0c4f5d6903f518939a83798_f4d0d7b43fcd320ee44ea3a0c72417ad Could not connect to 117.128.6.36:80 (117.128.6.36). - connect (111: Connection refused)
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+在这里插入图片描述
+有这样的问题，再次依次执行如下命令
+
+sudo apt update
+1
+在这里插入图片描述
+
+apt list --upgradable
+1
+在这里插入图片描述
+
+sudo apt install libjasper1 libjasper-dev
+1
+在这里插入图片描述
+在这里插入图片描述
+如图所示已经解决！
+在这里插入图片描述
