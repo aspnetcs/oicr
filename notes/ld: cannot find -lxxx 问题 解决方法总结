@@ -1,0 +1,23 @@
+ld: cannot find -lxxx 问题 解决方法总结
+https://www.cnblogs.com/sexybear/p/find_lib.html
+/usr/bin/ld: cannot find -lxxx 问题 解决方法总结
+最近在做毕设的收尾工作，很多程序都要部署到linux下来运行，遇到了挺多问题，昨天就集中性遇到了 在编译应用时，遇到了
+
+/usr/bin/ld: cannot find -lxxx
+这种情况是系统找不到对应的库文件，其中，-lxxx表示链接库文件 libxxx.so。
+
+其命名规则是：lib+库名(即xxx)+.so。
+
+会发生这样的原因有以下三种情形：
+1 系统没有安装相对应的lib
+2 相对应的lib版本不对
+3 lib(.so档)的symbolic link 不正确，没有连结到正确的函式库文件(.so)
+
+一般我们都是遇到了第三种情形，虽然安装了指定的库文件，但是没有进行正确的连接。
+
+对应第一二种情况，我们可以直接用apt-get来解决问题。
+
+apt-get install libxxx-dev
+第三种情形的话，我们先用locate和find来找到指定的lib文件，查看链接文件是否正确的指向了我们希望的lib，如果不是，用 ln -sf */libxxx.so.x */libxxx.so 指令修改它。
+
+连接以后，输入ldconfig来让动态链接库供系统共享。
